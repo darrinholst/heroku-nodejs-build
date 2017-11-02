@@ -1,0 +1,13 @@
+#!/bin/bash
+
+IMAGE="heroku-nodejs-build:${1:-latest}"
+
+docker build --quiet --force-rm --tag="${IMAGE}" node_modules/heroku-nodejs-build/container && \
+
+docker run \
+  --rm \
+  --workdir /app/user \
+  -v "$(pwd)":/app/user \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  "${IMAGE}" \
+  /package.sh

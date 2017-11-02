@@ -1,0 +1,15 @@
+#!/bin/bash
+
+IMAGE="heroku-nodejs-build:${1:-latest}"
+
+docker build --quiet --force-rm --tag="${IMAGE}" node_modules/heroku-nodejs-build/container && \
+
+docker run \
+  --rm \
+  --volume "$(pwd)":/app/user \
+  --workdir /app/user \
+  --env GITHUB_REPO="${GITHUB_REPO?is required}" \
+  --env GITHUB_TOKEN="${GITHUB_TOKEN?is required}" \
+  --env VERBOSE="${VERBOSE}" \
+  "${IMAGE}" \
+  /release.sh
