@@ -25,7 +25,7 @@ In `package.json` add the following scripts
   }
 ```
 
-To release a new version of your app run
+### To release a new version of your app run
 
     yarn run package && \
     GITHUB_REPO=your/github-repo \
@@ -34,3 +34,13 @@ To release a new version of your app run
 
 Get a github token [here](https://github.com/settings/tokens)
 
+### To deploy a version of your app run
+
+    RELEASE_TAG=the-tag or "latest" \
+    GITHUB_REPO=your/github-repo \
+    GITHUB_TOKEN=your-github-token \
+    HEROKU_APP=your-heroku-app \
+    HEROKU_TOKEN=your-heroku-token
+    yarn run release
+
+Get a heroku token with `heroku auth:token`
