@@ -40,7 +40,7 @@ Get a github token [here](https://github.com/settings/tokens)
     GITHUB_REPO=your/github-repo \
     GITHUB_TOKEN=your-github-token \
     HEROKU_APP=your-heroku-app \
-    HEROKU_TOKEN=your-heroku-token
+    HEROKU_TOKEN=your-heroku-token \
     yarn run release
 
 Get a heroku token with `heroku auth:token`
