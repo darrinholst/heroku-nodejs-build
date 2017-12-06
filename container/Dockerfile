@@ -1,4 +1,4 @@
-FROM darrinholst/heroku-nodejs:v8.9.1
+FROM darrinholst/heroku-nodejs:v8.9.2
 
 ENV CI=true
 ENV DOCKER=true
