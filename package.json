@@ -1,6 +1,6 @@
 {
   "name": "heroku-nodejs-build",
-  "version": "8.11.3",
+  "version": "10.15.3",
   "description": "Scripts to help build, package, release and deploy node apps to Heroku",
   "main": "index.js",
   "repository": "https://github.com/darrinholst/heroku-nodejs-build.git",

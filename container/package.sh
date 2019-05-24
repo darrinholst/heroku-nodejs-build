@@ -30,7 +30,7 @@ sed -i -e "s/\[GIT_SHA\]/${GIT_SHA}/g" server/config/version.js
 # -----------------------------------------------------------------------------
 # Creates a checksum for the slug so we don't have to publish a new release
 # if nothing has changed. i.e. just a documentation or README change. We
-# ignore node_modules since yarn.lock should take care of this and version.js
+# ignore node_modules since package-lock.json should take care of this and version.js
 # since that changes with every build.
 # -----------------------------------------------------------------------------
 function fingerprint {
@@ -49,7 +49,7 @@ function fingerprint {
 # keep the artifact size down
 # -----------------------------------------------------------------------------
 function package {
-  echo "removing dev dependencies..." && yarn install --production && \
+  echo "removing dev dependencies..." && npm prune --production && \
   echo "building the slug..." && touch .slugignore && tar cfz build/slug.tgz -C "${TEMP_ROOT_DIR}" -X .slugignore . && \
   echo "generating the slug checksum..." && fingerprint && echo "${TEMP_APP_DIR}/build/slug.md5"
 }

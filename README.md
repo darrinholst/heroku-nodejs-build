@@ -4,12 +4,11 @@ Scripts to help build, package, release and deploy node apps to Heroku
 
 ## Installation
 
-    yarn add --dev heroku-nodejs-build
+    npm i -d heroku-nodejs-build
 
 ## Requirements
 
 * [Docker](https://www.docker.com/) installed
-* [Yarn](https://yarnpkg.com) installed
 * A script to build and test your application located at `scripts/verify`
 
 ## Usage
@@ -27,10 +26,10 @@ In `package.json` add the following scripts
 
 ### To release a new version of your app run
 
-    yarn run package && \
+    npm run package && \
     GITHUB_REPO=your/github-repo \
     GITHUB_TOKEN=your-github-token \
-    yarn run release
+    npm run release
 
 Get a github token [here](https://github.com/settings/tokens)
 
@@ -41,6 +40,6 @@ Get a github token [here](https://github.com/settings/tokens)
     GITHUB_TOKEN=your-github-token \
     HEROKU_APP=your-heroku-app \
     HEROKU_TOKEN=your-heroku-token \
-    yarn run deploy
+    npm run deploy
 
 Get a heroku token with `heroku auth:token`

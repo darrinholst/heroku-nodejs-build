@@ -17,7 +17,7 @@ const application = process.env.HEROKU_APP;
     let artifact = downloadBuildArtifact(release.assets);
     let artifactsDir = untarArtifact(artifact);
     log('creating new slug');
-    let slug = heroku.post(`${application}/slugs`, {'process_types': {web: 'cd /app/user && yarn run start'}}).json;
+    let slug = heroku.post(`${application}/slugs`, {stack: 'heroku-18', 'process_types': {web: 'cd /app/user && npm run start'}}).json;
     log('uploading slug');
     heroku.upload(slug.blob.method, slug.blob.url, `${artifactsDir}/slug.tgz`);
     log('releasing slug');
