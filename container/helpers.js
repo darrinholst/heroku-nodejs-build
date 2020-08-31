@@ -71,10 +71,18 @@ function githubDownload(repo, endpoint) {
   let tempdir = fs.mkdtempSync('/tmp/heroku-nodejs-build-');
   let tempfile = `${tempdir}/download`;
 
-  // normally we would put the token in the header, but since we'll likely get redirected
-  // to s3 we put it in the url. An s3 download will choke if it has the github Authorization
-  // header forwarded on
-  run('curl', '-v', '-L', '-H', 'Accept: application/octet-stream', '-o', tempfile, `${githubUrl(repo, endpoint)}?access_token=${env('GITHUB_TOKEN')}`);
+  run(
+    'curl',
+    '-v',
+    '-L',
+    '-H',
+    'Accept: application/octet-stream',
+    '-H',
+    `Authorization: token ${env('GITHUB_TOKEN')}`,
+    '-o',
+    tempfile,
+    githubUrl(endpoint)
+  );
 
   return tempfile;
 }
