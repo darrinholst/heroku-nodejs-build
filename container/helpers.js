@@ -81,7 +81,7 @@ function githubDownload(repo, endpoint) {
     `Authorization: token ${env('GITHUB_TOKEN')}`,
     '-o',
     tempfile,
-    githubUrl(endpoint)
+    githubUrl(repo, endpoint)
   );
 
   return tempfile;
